@@ -1,0 +1,29 @@
+/*
+  Factorizacion en primos de los primeros n!
+*/
+
+long factorizacion[100][100];
+
+void factorialp(long n)
+{
+	factorizacion[2][2]=1;
+	for(long i=2; i<=n; i++)
+	{
+		long aux=i;
+		for(long j=0; j<primos.size(); j++)
+		{
+			long cont=0;
+			while(aux%primos[j]==0)
+			{
+				aux/=primos[j];
+				cont++;
+			}
+			factorizacion[i][primos[j]]=factorizacion[i-1][primos[j]]+cont;
+		}
+	}
+	/*for(long i=2; i<=n; i++)
+	{
+		for(long j=2; j<=50; j++) cout << factorizacion[i][j] << " ";
+		cout << "\n\n";
+	}*/
+}
